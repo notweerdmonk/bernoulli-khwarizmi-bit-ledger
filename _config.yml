@@ -1,0 +1,43 @@
+title: The Bernoulli–Khwarizmi Experiment
+description: Continuously growing coin-toss experiment 
+
+url: "https://notweerdmonk.github.io"
+baseurl: "/bernoulli-khwarizmi-bit-ledger"
+
+author: notweerdmonk
+email: wrdmnk@gmail.com
+
+github_username: notweerdmonk
+
+source: .
+destination: _site
+
+markdown: kramdown
+highlighter: rouge
+
+# Use no GitHub Pages theme or github-pages gem.
+theme: minima
+
+relative_links:
+  enabled: true
+  collections: true
+
+collections:
+  items:
+    output: true
+    permalink: /items/:path/
+    sort_by: date
+
+include:
+  - README.md
+
+exclude:
+  - .git
+  - .github
+  - research
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - node_modules
+  - README.md.orig
+  - _site

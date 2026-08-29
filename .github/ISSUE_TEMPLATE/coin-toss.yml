@@ -1,0 +1,31 @@
+name: Request a coin toss
+description: Generate a new coin toss and update the repository
+title: "[Coin Toss] Request"
+labels:
+  - coin-toss
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This will generate one coin toss and update the repository.
+
+        This issue triggers a workflow which will:
+
+        - Close the issuse
+        - Run `run_toss.sh`
+        - Update `tosses.csv`
+        - Update `README.md`
+        - Commit the changes to the repository
+
+        **The title text must start with `[Coin Toss]` to trigger the workflow.**
+
+        Please submit only one request at a time. 
+
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Confirmation
+      options:
+        - label: I understand that this will update the repository.
+          required: true

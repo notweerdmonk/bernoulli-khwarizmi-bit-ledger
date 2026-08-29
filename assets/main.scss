@@ -1,0 +1,178 @@
+---
+---
+
+@import "minima";
+
+/* Dark theme when the operating system prefers dark mode */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #121212;
+    color: #e6e6e6;
+  }
+
+  a {
+    color: #82b1ff;
+    text-decoration: none;
+  }
+  a:visited {
+    color: #b39ddb;
+  }
+  a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+  }
+  .social-media-list a:hover {
+    text-decoration: none;
+  }
+  .social-media-list a:hover .username {
+    text-decoration: underline;
+  }
+
+  .site-title,
+  .page-heading,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #f2f2f2;
+  }
+
+  pre,
+  code {
+    background-color: #1e1e1e;
+    color: #e6e6e6;
+  }
+
+  blockquote {
+    color: #aaaaaa;
+    border-left-color: #444444;
+  }
+
+  table {
+    color: #e6e6e6;
+  }
+
+  th,
+  td {
+    border-color: #444444;
+  }
+
+  /*.highlighter-rouge,*/
+  .highlighter-rouge .highlight {
+  /*.highlight,*/
+  /*pre.highlight,*/
+  /*.highlight pre {*/
+    background-color: #1e1e1e !important;
+    color: #d4d4d4 !important;
+  }
+
+  .highlight pre {
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+  }
+
+  /* Comments */
+  .highlight .c,
+  .highlight .cm,
+  .highlight .cp,
+  .highlight .c1,
+  .highlight .cs {
+    color: #6a9955 !important;
+  }
+
+  /* Errors */
+  .highlight .err {
+    color: #f44747 !important;
+    background-color: transparent !important;
+  }
+
+  /* Keywords */
+  .highlight .k,
+  .highlight .kc,
+  .highlight .kd,
+  .highlight .kn,
+  .highlight .kp,
+  .highlight .kr,
+  .highlight .kt {
+    color: #c586c0 !important;
+  }
+
+  /* Operators and punctuation */
+  .highlight .o,
+  .highlight .ow,
+  .highlight .p {
+    color: #d4d4d4 !important;
+  }
+
+  /* Numbers */
+  .highlight .m,
+  .highlight .mf,
+  .highlight .mh,
+  .highlight .mi,
+  .highlight .mo,
+  .highlight .il {
+    color: #b5cea8 !important;
+  }
+
+  /* Strings */
+  .highlight .s,
+  .highlight .sb,
+  .highlight .sc,
+  .highlight .sd,
+  .highlight .s2,
+  .highlight .se,
+  .highlight .sh,
+  .highlight .si,
+  .highlight .sx,
+  .highlight .sr,
+  .highlight .s1,
+  .highlight .ss {
+    color: #ce9178 !important;
+  }
+
+  /* Names, functions, and variables */
+  .highlight .na,
+  .highlight .nb,
+  .highlight .nc,
+  .highlight .nd,
+  .highlight .ne,
+  .highlight .nf,
+  .highlight .nl,
+  .highlight .nn,
+  .highlight .no,
+  .highlight .nv,
+  .highlight .vc,
+  .highlight .vg,
+  .highlight .vi {
+    color: #9cdcfe !important;
+  }
+
+  /* Tags and attributes */
+  .highlight .nt {
+    color: #569cd6 !important;
+  }
+
+  /* Generic diff and heading tokens */
+  .highlight .gd {
+    color: #f44747 !important;
+    background-color: #3a1d1d !important;
+  }
+
+  .highlight .gi {
+    color: #b5cea8 !important;
+    background-color: #1e3a29 !important;
+  }
+
+  .highlight .gh,
+  .highlight .gu {
+    color: #569cd6 !important;
+  }
+
+  /* Line numbers, if enabled */
+  .highlight .lineno {
+    color: #858585 !important;
+    background-color: #1e1e1e !important;
+  }
+}

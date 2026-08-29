@@ -1,0 +1,106 @@
+name: Coin Toss
+
+on:
+  workflow_dispatch:
+
+  issues:
+    types:
+      - opened
+
+  schedule:
+    # Every hour at minute 0
+    - cron: "0 * * * *"
+
+permissions:
+  contents: write
+  issues: write
+
+# Prevent simultaneous runs from overwriting each other's files.
+concurrency:
+  group: coin-toss-data
+  cancel-in-progress: false
+
+jobs:
+  toss:
+    # For issue-triggered runs, only process issues created from
+    # the coin-toss Issue Form.
+    if: >
+      github.event_name != 'issues' ||
+      (
+        startsWith(github.event.issue.title, '[Coin Toss]') &&
+        contains(
+          github.event.issue.body,
+          'I understand that this will update the repository.'
+        )
+      )
+
+    runs-on: ubuntu-latest
+
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Reject duplicate request
+        if: github.event_name == 'issues'
+        id: duplicate
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+          CURRENT_ISSUE: ${{ github.event.issue.number }}
+        run: |
+          open_requests=$(
+            gh issue list \
+              --repo "$REPOSITORY" \
+              --state open \
+              --label coin-toss \
+              --json number \
+              --jq '[.[] | select(.number != ('$CURRENT_ISSUE'))] | length'
+          )
+
+          if [ "$open_requests" -gt 0 ]; then
+            echo "duplicate=true" >> "$GITHUB_OUTPUT"
+
+            gh issue comment "$CURRENT_ISSUE" \
+              --body "A coin-toss request is already open. This request will be closed."
+
+            gh issue close "$CURRENT_ISSUE"
+          else
+            echo "duplicate=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Run coin toss
+        if: steps.duplicate.outputs.duplicate != 'true'
+        run: |
+          chmod +x ./run_toss.sh
+          ./run_toss.sh
+
+      - name: Commit results
+        if: steps.duplicate.outputs.duplicate != 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add tosses.csv README.md
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          git commit -m "Record coin toss"
+          git push
+
+      - name: Close completed issue
+        if: github.event_name == 'issues' && success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          gh issue comment "$ISSUE_NUMBER" \
+            --body "Coin toss recorded and repository files updated."
+
+          gh issue close "$ISSUE_NUMBER"
