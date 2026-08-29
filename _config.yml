@@ -15,7 +15,7 @@ destination: _site
 markdown: kramdown
 highlighter: rouge
 
-# Use no GitHub Pages theme or github-pages gem.
+ Use no GitHub Pages theme or github-pages gem.
 theme: minima
 
 relative_links:

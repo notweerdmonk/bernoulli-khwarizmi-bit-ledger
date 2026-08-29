@@ -21,8 +21,35 @@ permalink: /
   async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
 </script>
+# The Bernoulli–Khwarizmi Experiment
 
 _**A computational experiment in randomness, probability, and convergence.**_
+
+---
+<br>
+
+[![Request a coin toss](https://img.shields.io/badge/Request-coin%20toss-blue)](https://github.com/notweerdmonk/bernoulli-khwarizmi-bit-ledger/issues/new?template=coin-toss.yml)
+<br>
+<br>
+
+<!-- COIN_STATS_START -->
+## Current Results
+
+- Total tosses: 1
+- Number of ones: 0
+- Current probability estimate: 0.00000000
+- Current percentage of ones: 0.000000%
+
+The current estimate is calculated as:
+
+```text
+number of ones / total tosses
+```
+<!-- COIN_STATS_END -->
+<br>
+
+---
+<br>
 
 ## Prologue
 
@@ -92,7 +119,7 @@ The `README` is subsequently updated with:
 - the **number of ones** observed; and
 - the **empirical proportion of ones**.
 
-For \(n\) observations, let \(X_i\in\{0,1\}\) denote the \(i\)-th outcome. The cumulative number of ones is
+For \\(n\\\) observations, let \\(X_i\in\{0,1\}\\) denote the \\(i\\)-th outcome. The cumulative number of ones is
 
 \\[
 S_n = \sum_{i=1}^{n} X_i,
@@ -111,16 +138,10 @@ For a fair binary experiment, the expected limiting value is
 \qquad\text{as } n\to\infty.
 \\]
 
-The experiment does not expect the observed proportion to approach \(\frac{1}{2}\)
+The experiment does not expect the observed proportion to approach \\(\frac{1}{2}\\)
 monotonically. Rather, the proportion is expected to fluctuate around the
 theoretical probability, with those fluctuations becoming relatively smaller as
 the number of observations increases.
-
-[![Request a coin toss](https://img.shields.io/badge/Request-coin%20toss-blue)](https://github.com/notweerdmonk/bernoulli-khwarizmi-bit-ledger/issues/new?template=coin-toss.yml)
-
-<!-- COIN_STATS_START -->
-No tosses recorded yet.
-<!-- COIN_STATS_END -->
 
 ## Mathematical formulation
 
@@ -152,7 +173,7 @@ The corresponding two-sided alternative is
 H_1: p \ne \frac{1}{2}.
 \\]
 
-After \(N\) recorded outcomes, let
+After \\(N\\) recorded outcomes, let
 
 \\[
 H_N = \sum_{i=1}^{N} X_i
@@ -164,18 +185,18 @@ denote the number of ones. The cumulative empirical proportion of ones is
 \widehat{p}_N = \frac{H_N}{N}.
 \\]
 
-The experiment estimates \(p\) using the observed proportion
-\(\widehat{p}_N\). This is an estimate based on the recorded data, not the
-actual probability \(p\). The experiment does not prove with certainty that
-\(p = \frac{1}{2}\).
+The experiment estimates \\(p\\) using the observed proportion
+\\(\widehat{p}_N\\). This is an estimate based on the recorded data, not the
+actual probability \\(p\\). The experiment does not prove with certainty that
+\\(p = \frac{1}{2}\\).
 
-Thus \(\widehat{p}_N\) is an estimator of the underlying probability \(p\).
+Thus \\(\widehat{p}_N\\) is an estimator of the underlying probability \\(p\\).
 It is a quantity computed from the observed data; it is not itself the
 probability being estimated.
 
 The distinction is important. Even if the underlying process has
-\(p = \frac{1}{2}\), a finite observation sequence will almost never satisfy
-\(\widehat{p}_N = \frac{1}{2}\) exactly. Conversely, an empirical proportion
+\\(p = \frac{1}{2}\\), a finite observation sequence will almost never satisfy
+\\(\widehat{p}_N = \frac{1}{2}\\) exactly. Conversely, an empirical proportion
 close to one half does not establish that the underlying probability is exactly
 one half.
 
@@ -200,7 +221,7 @@ and
 \\]
 
 These are the expectation and variance of a Bernoulli random variable with
-success probability \(\frac{1}{2}\).[^bernoulli]
+success probability \\(\frac{1}{2}\\).[^bernoulli]
 
 Assuming the outcomes are independent and identically distributed, the law of
 large numbers states that
@@ -209,8 +230,8 @@ large numbers states that
 \widehat{p}_N \longrightarrow p
 \\]
 
-as \(N\) tends to infinity.[^lln] Therefore, under the fairness hypothesis
-\(H_0\),
+as \\(N\\) tends to infinity.[^lln] Therefore, under the fairness hypothesis
+\\(H_0\\),
 
 \\[
 \widehat{p}_N \longrightarrow \frac{1}{2}.
@@ -218,40 +239,40 @@ as \(N\) tends to infinity.[^lln] Therefore, under the fairness hypothesis
 
 This convergence should not be interpreted as monotonic motion toward one
 half. The empirical proportion is itself random and may repeatedly cross the
-value \(\frac{1}{2}\). What diminishes with increasing N is the typical scale
+value \\(\frac{1}{2}\\). What diminishes with increasing N is the typical scale
 of its fluctuation.
 
-For independent Bernoulli trials with \(p = \frac{1}{2}\),
+For independent Bernoulli trials with \\(p = \frac{1}{2}\\),
 
-\[
+\\[
 \operatorname{Var}(\widehat{p}_N)
 = \frac{p(1-p)}{N}
 = \frac{1}{4N}
-\]
+\\]
 
 so the standard deviation of the empirical proportion is
 
-\[
+\\[
 \operatorname{SD}(\widehat{p}_N)
 = \frac{1}{2\sqrt{N}}
-\]
+\\]
 
 Thus the characteristic scale of statistical error decreases on the order of
 
-\[
+\\[
 \frac{1}{\sqrt{N}}
-\]
+\\]
 
-rather than \(\frac{1}{N}\). Obtaining another decimal place of typical
+rather than \\(\frac{1}{N}\\). Obtaining another decimal place of typical
 precision therefore requires roughly one hundred times as many observations.
 
 Concentration inequalities provide stronger finite-sample statements. For
 example, Hoeffding's inequality gives, for independent Bernoulli observations,
 
-\[
+\\[
 P\left(\left|\widehat{p}_N-p\right|\ge\varepsilon\right)
 \le 2e^{-2N\varepsilon^2}.
-\]
+\\]
 
 This bound concerns the probability of a deviation of a specified magnitude;
 it does not assert that the observed proportion must lie within that magnitude
@@ -259,7 +280,7 @@ at every finite N.
 
 ## Statistical hypothesis test
 
-For a fixed number \(N\) of observations, the number of ones under \(H_0\) has
+For a fixed number \\(N\\) of observations, the number of ones under \\(H_0\\) has
 the binomial distribution
 
 \\[
@@ -267,7 +288,7 @@ H_N \sim \operatorname{Binomial}\left(N, \frac{1}{2}\right).
 \\]
 
 An exact two-sided binomial test can therefore be used to calculate the
-probability, under \(H_0\), of obtaining a result at least as extreme as the
+probability, under \\(H_0\\), of obtaining a result at least as extreme as the
 observed number of ones.[^binomial]
 
 For a chosen significance level such as
@@ -278,11 +299,11 @@ For a chosen significance level such as
 
 the conventional decision rule is:
 
-- reject \(H_0\) if the p-value is less than \(0.05\);
-- otherwise, fail to reject \(H_0\).
+- reject \\(H_0\\) if the p-value is less than \\(0.05\\);
+- otherwise, fail to reject \\(H_0\\).
 
 The phrase **fail to reject** is deliberate. A non-significant result is not
-evidence that \(p = \frac{1}{2}\) has been proved. It means only that the
+evidence that \\(p = \frac{1}{2}\\) has been proved. It means only that the
 observed data do not provide sufficient evidence, at the chosen significance
 level, against the null model.
 
@@ -297,19 +318,19 @@ sequential nature of the observations.
 
 The central prediction of the experiment is the conditional statement
 
-\[
+\\[
 p = \frac{1}{2}
 \quad\Longrightarrow\quad
 \widehat{p}_N \longrightarrow \frac{1}{2}
-\]
+\\]
 
-as \(N\) grows, provided the assumptions required by the law of large numbers
+as \\(N\\) grows, provided the assumptions required by the law of large numbers
 are satisfied.
 
 The converse does not follow. Observing an empirical proportion close to
-\(\frac{1}{2}\) does not prove that the underlying probability is exactly
-\(\frac{1}{2}\). Likewise, even if \(p=\frac{1}{2}\), finite samples will
-generally fluctuate around \(\frac{1}{2}\).
+\\(\frac{1}{2}\\) does not prove that the underlying probability is exactly
+\\(\frac{1}{2}\\). Likewise, even if \\(p=\frac{1}{2}\\), finite samples will
+generally fluctuate around \\(\frac{1}{2}\\).
 
 The experiment therefore provides empirical evidence about the behavior of the
 random-number source under a specified statistical model; it does not prove
@@ -327,21 +348,21 @@ The interpretation of the accumulated results depends on several assumptions:
 
 The central mathematical prediction is the conditional statement
 
-\[
+\\[
 p=\frac{1}{2}
 \quad\Longrightarrow\quad
 \widehat{p}_N \longrightarrow \frac{1}{2}.
-\]
+\\]
 
 under the assumptions required by the law of large numbers.
 
 The converse does not follow:
 
-\[
+\\[
 \widehat{p}_N \approx \frac{1}{2}
 \quad\not\Longrightarrow\quad
 p=\frac{1}{2}.
-\]
+\\]
 
 A biased process can produce a finite sample whose empirical proportion is
 close to one half. Likewise, a fair process can produce a finite sample whose
