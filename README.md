@@ -35,10 +35,10 @@ _**A computational experiment in randomness, probability, and convergence.**_
 <!-- COIN_STATS_START -->
 ## Current Results
 
-- Total tosses: 114
-- Number of ones: 51
-- Current probability estimate: 0.44736842
-- Current percentage of ones: 44.736842%
+- Total tosses: 115
+- Number of ones: 52
+- Current probability estimate: 0.45217391
+- Current percentage of ones: 45.217391%
 
 The current estimate is calculated as:
 
